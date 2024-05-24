@@ -11,7 +11,6 @@ public class Company
     public int MentionCount { get; set; }
     public List<string> MentionedInFiles { get; set; }
 
-    // Додані атрибути
     public string Industry { get; set; }
     public string Country { get; set; }
     public int FoundedYear { get; set; }
@@ -52,7 +51,7 @@ public class Company
         return FromJson(json);
     }
 
-    // Нові методи для обробки власних атрибутів
+    
     public void UpdateCEO(string newCeo)
     {
         CEO = newCeo;
@@ -80,8 +79,8 @@ public class TextAnalyzer
 
     public string PreprocessText(string text)
     {
-        text = text.ToLower(); // Переведення тексту в нижній регістр
-        text = Regex.Replace(text, @"[^\w\s]", ""); // Видалення знаків пунктуації
+        text = text.ToLower(); 
+        text = Regex.Replace(text, @"[^\w\s]", ""); 
         return text;
     }
 
@@ -109,7 +108,7 @@ public class FileManager
 {
     public string DirectoryPath { get; set; }
 
-    // Додані атрибути
+   
     public long TotalFileSize { get; set; }
     public int TotalFilesProcessed { get; set; }
     public DateTime LastProcessed { get; set; }
@@ -169,7 +168,7 @@ public class FileManager
         }
     }
 
-    // Нові методи для обробки власних атрибутів
+    
     public void ResetFileProcessingStats()
     {
         TotalFileSize = 0;
@@ -245,7 +244,7 @@ public class Program
         {
             new Company("Apple Inc.", new List<string> { "apple", "aapl" }, "Technology", "USA", 1976, "Tim Cook", 2.5M),
             new Company("Microsoft Corporation", new List<string> { "microsoft", "msft" }, "Technology", "USA", 1975, "Satya Nadella", 1.9M)
-            // Додайте інші компанії та їхні синоніми
+            
         };
 
         var fileManager = new FileManager("path/to/directory");
@@ -265,7 +264,7 @@ public class Program
 
         Console.WriteLine("Report generated and saved to report.json");
 
-        // Використання нових методів
+       
         companies[0].UpdateCEO("New CEO");
         companies[1].UpdateMarketCap(2.1M);
         fileManager.ResetFileProcessingStats();
